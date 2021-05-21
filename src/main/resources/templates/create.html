@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Financiamento - Create</title>
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link rel="stylesheet" th:href="@{/css/estilo.css}">
+<link rel="stylesheet" th:href="@{/css/bootstrap-datepicker3.css}">  
+</head>
+<body>
+<header th:insert="fragments/header.html"></header>
+
+
+	<div class="container">
+		<div class="panel panel-primary">
+			<div class="panel-body">
+			
+			<h3 class="text-on-pannel text-primary">
+					<strong class="text-uppercase">Criar Intenção</strong>
+				</h3>
+				<form th:action="@{/create}" th:object="${intencao}" method="post">
+					<input type="hidden"  th:field="*{id}">
+					
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+						 		<label for="cliente">Cliente</label>
+						 		<input type="text" class="form-control" th:field="*{cliente}" th:errorclass="is-invalid" placeholder="Nome do Cliente" />
+						 		<div th:erros="*{cliente}" class="invalid-feedback"></div>
+						 	</div>
+						</div>
+					 	
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+						 		<label for="longradouro">Endereço</label>
+						 		<input type="text" class="form-control" th:field="*{longradouro}" th:errorclass="is-invalid" />
+						 		<div th:erros="*{longradouro}" class="invalid-feedback"></div>
+						 	</div>
+						</div>
+					 	
+					 	<div class="col-md-1">
+							<div class="form-group">
+						 		<label for="numero">Nº</label>
+						 		<input type="text" class="form-control" th:field="*{numero}" th:errorclass="is-invalid" />
+						 		<div th:erros="*{numero}" class="invalid-feedback"></div>
+						 	</div>
+						</div>
+						
+						<div class="col-md-3">
+							<div class="form-group">
+						 		<label for="cidade">Cidade</label>
+						 		<input type="text" class="form-control" th:field="*{cidade}" th:errorclass="is-invalid" />
+						 		<div th:erros="*{cidade}" class="invalid-feedback"></div>
+						 	</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group">
+						 		<label for="estado">Estado</label>
+						 			<select class="form-control" th:errorclass="is-valid" th:field="*{estado}"></select>
+						 		<div th:erros="*{longradouro}" class="invalid-feedback"></div>
+						 	</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group">
+						 		<label for="cep">CEP</label>
+						 		<input type="text" class="form-control" th:field="*{cep}" th:errorclass="is-invalid" />
+						 		<div th:erros="*{cep}" class="invalid-feedback"></div>
+						 	</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+						 		<label for="cpf">CPF</label>
+						 		<input type="text" class="form-control" th:field="*{cpf}" th:errorclass="is-invalid" />
+						 		<div th:erros="*{cpf}" class="invalid-feedback"></div>
+						 	</div>
+						</div>
+					 	
+					 	<div class="col-md-4">
+							<div class="form-group">
+						 		<label for="rg">RG</label>
+						 		<input type="text" class="form-control" th:field="*{rg}" th:errorclass="is-invalid" />
+						 		<div th:erros="*{rg}" class="invalid-feedback"></div>
+						 	</div>
+						</div>
+						
+						<div class="col-md-4">
+							<div class="form-group">
+						 		<label for="dtnasc">Data nascimento</label>
+<!-- 						 		<input type="text" class="form-control" th:field="*{dtnasc}" th:errorclass="is-invalid" /> -->
+							    <div class="input-group date">
+							      <input type="text" class="form-control" th:field="*{dtnasc}" th:errorclass="is-invalid"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+							    </div>
+						 		<div th:erros="*{dtnasc}" class="invalid-feedback"></div>
+						 	</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+						 		<label for="email">E-mail</label>
+						 		<input type="text" class="form-control" th:field="*{email}" th:errorclass="is-invalid" />
+						 		<div th:erros="*{email}" class="invalid-feedback"></div>
+						 	</div>
+						</div>
+					 	
+					 	<div class="col-md-3">
+							<div class="form-group">
+						 		<label for="telefone">Telefone residencial</label>
+						 		<input type="text" class="form-control" th:field="*{telefone}" th:errorclass="is-invalid" />
+						 		<div th:erros="*{telefone}" class="invalid-feedback"></div>
+						 	</div>
+						</div>
+						
+						<div class="col-md-3">
+							<div class="form-group">
+						 		<label for="celular">Celular</label>
+						 		<input type="text" class="form-control" th:field="*{celular}" th:errorclass="is-invalid" />
+						 		<div th:erros="*{celular}" class="invalid-feedback"></div>
+						 	</div>
+						</div>
+					</div>
+					
+					
+					<div class="row">
+						<div class="col-md-3">
+							<div class="form-group">
+						 		<label for="email">Tipo Financiamento</label>
+						 		<select class="form-control" th:errorclass="is-valid" th:field="*{tpFinanciamento}">
+						 			<option value="Auto">Auto</option>
+						 			<option value="Imobiliário">Imobiliário</option>
+						 			<option value="Estudantil">Estudantil</option>
+						 		</select>
+						 		<div th:erros="*{tpFinanciamento}" class="invalid-feedback"></div>
+						 	</div>
+						</div>
+					 	
+					 	<div class="col-md-3">
+							<div class="form-group">
+						 		<label for="qtd">Quantidade Parcelas</label>
+						 		<input type="number" class="form-control" th:field="*{qtd}" th:errorclass="is-invalid" />
+						 		<div th:erros="*{qtd}" class="invalid-feedback"></div>
+						 	</div>
+						</div>
+						
+						<div class="col-md-3">
+							<div class="form-group">
+						 		<label for="valor">Valor</label>
+						 		<input type="text" class="form-control money2" th:field="*{valor}" th:errorclass="is-invalid" />
+						 		<div th:erros="*{valor}" class="invalid-feedback"></div>
+						 	</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+						 		<label for="salario">Salário</label>
+						 		<input type="text" class="form-control money2" th:field="*{salario}" th:errorclass="is-invalid" />
+						 		<div th:erros="*{salario}" class="invalid-feedback"></div>
+						 	</div>
+						</div>
+					</div>
+					<div class="pull-right"><button type="submit" class="btn btn-primary">Salvar</button></div>
+					
+				
+					
+				</form>
+				
+				
+			</div>
+		</div>
+	</div>
+
+	<footer class="footer mt-auto py-3" th:insert="fragments/footer.html"></footer>
+	
+	
+	<script type="text/javascript" th:src="@{/js/jquery.mask.js}"></script>
+	<script type="text/javascript" th:src="@{/js/bootstrap-datepicker.js}"></script>
+	<script type="text/javascript" th:src="@{/js/bootstrap-datepicker.pt-BR.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/util.js}"></script>
+	
+</body>
+</html>

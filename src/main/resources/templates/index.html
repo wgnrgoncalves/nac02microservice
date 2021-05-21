@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Financiamento</title>
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link rel="stylesheet" th:href="@{/css/estilo.css}"> 
+</head>
+<body>
+<header th:insert="fragments/header.html"></header>
+
+
+	<div class="container">
+		<div class="panel panel-primary">
+			<div class="panel-body">
+			
+				<a href="/create" class="btn btn-primary">Nova Intenção</a>
+				<div>
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Cliente</th>
+								<th scope="col">Tipo Financiamento</th>
+								<th scope="col">Valor Intenção</th>
+								<th scope="col">Quantidade parcelamento</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="intencao : ${intencoes}">
+								<td th:text="${intencao.cliente}"></td>
+								<td th:text="${intencao.tpFinanciamento}"></td>
+								<td th:text="${intencao.valor}"></td>
+								<td th:text="${intencao.qtd}"></td>
+								<td class="text-center">
+									<a th:href="@{/edit/{id}(id = ${intencao.id})}" class="btn btn-warning">Detalhar</a> 
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer class="footer mt-auto py-3" th:insert="fragments/footer.html"></footer>
+</body>
+</html>
